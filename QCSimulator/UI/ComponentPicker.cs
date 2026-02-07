@@ -28,7 +28,9 @@ namespace QCSimulator.UI
             {
                 // Draw menu once
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Select component #{pick + 1}:");
+                Console.ResetColor();
                 int startRow = Console.CursorTop;
 
                 // Print all component names

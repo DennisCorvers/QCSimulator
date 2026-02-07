@@ -3,22 +3,30 @@ using QCSimulator.Components;
 using QCSimulator.Data;
 using QCSimulator.UI;
 
+// Data loading
 var data = (new DataLoader()).LoadComponents();
 
+Console.WriteLine("Configure your simulation parameters:\n");
+Console.WriteLine();
+
+// Variable inputs
+var clock = ConsoleParser.ReadDouble("Enter overclock multiplier", 1.00);
+var voltage = ConsoleParser.ReadDouble("Enter overvolt multiplier", 1.00);
+var racks = (int)ConsoleParser.ReadDouble("Enter number of racks", 2);
+
+var voltageTier = ConsoleParser.ReadEnum("Select voltage tier:", Voltage.ZPM);
+
+// Component inputs
 var picker = new ComponentPicker(4, data);
 var components = picker.Pick();
-
-var clock = 1.44;
-var voltage = 1.03;
-var racks = 2;
-var voltageTier = Voltage.UV;
 
 var rack = new Rack(components);
 var computer = new QuantumComputer(rack, clock, voltage, racks, voltageTier);
 
 Console.Clear();
-
-Console.WriteLine("Simulating...");
+WriteAffirmation("Simulating your computer:");
+Console.WriteLine(string.Join(", ", components.Select(x=>x.Name)));
+Console.WriteLine();
 
 var result = computer.Simulate();
 
@@ -57,3 +65,4 @@ static void WriteMessage(string text)
 {
     Console.WriteLine(text);
 }
+
