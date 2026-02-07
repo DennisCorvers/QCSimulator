@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QCSimulator.UI
 {
@@ -23,31 +21,54 @@ namespace QCSimulator.UI
         public ICollection<Component> Pick()
         {
             var selectedComponents = new List<Component>();
-            int componentsToSelect = 4;
+            int componentsToSelect = m_count;
             int currentIndex = 0;
 
             for (int pick = 0; pick < componentsToSelect; pick++)
             {
-                ConsoleKey key;
+                // Draw menu once
+                Console.Clear();
+                Console.WriteLine($"Select component #{pick + 1}:");
+                int startRow = Console.CursorTop;
 
+                // Print all component names
+                for (int i = 0; i < m_components.Count; i++)
+                {
+                    var c = m_components.ElementAt(i);
+                    Console.WriteLine($"{i + 1}: {c.Name} ({c.Computation} Computations)");
+                }
+
+                ConsoleKey key;
                 do
                 {
-                    Console.Clear();
-                    Console.WriteLine($"Select component #{pick + 1}:");
-
+                    // Highlight current line only
                     for (int i = 0; i < m_components.Count; i++)
                     {
-                        if (i == currentIndex)
-                            Console.ForegroundColor = ConsoleColor.Cyan;
-                        else
-                            Console.ResetColor();
+                        Console.SetCursorPosition(0, startRow + i);
 
-                        var selectedComponent = m_components.ElementAt(i);
-                        Console.WriteLine($"{i + 1}: {selectedComponent.Name} ({selectedComponent.Computation} Computations)");
+                        var c = m_components.ElementAt(i);
+
+                        if (i == currentIndex)
+                        {
+                            Console.BackgroundColor = ConsoleColor.White;
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                        else
+                        {
+                            Console.ResetColor();
+                        }
+
+                        // Clear the line first
+                        Console.Write(new string(' ', Console.WindowWidth));
+                        Console.SetCursorPosition(0, startRow + i);
+
+                        // Write the component
+                        Console.Write($"{i + 1}: {c.Name} {GetComponentInfo(c)}");
                     }
 
                     Console.ResetColor();
 
+                    // Read key
                     var keyInfo = Console.ReadKey(intercept: true);
                     key = keyInfo.Key;
 
@@ -67,6 +88,11 @@ namespace QCSimulator.UI
             }
 
             return selectedComponents;
+        }
+
+        private static string GetComponentInfo(Component component)
+        {
+            return string.Empty;
         }
     }
 }
