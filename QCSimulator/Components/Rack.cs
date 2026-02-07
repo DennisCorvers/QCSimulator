@@ -18,5 +18,12 @@ namespace QCSimulator.Components
                 component4
                 };
         }
+
+        public Rack(ICollection<Component> components)
+        {
+            if (components.Count != 4) throw new ArgumentException("Component count needs to be exactly 4");
+
+            m_components = components.ToArray();
+        }
     }
 }

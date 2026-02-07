@@ -1,18 +1,26 @@
-﻿// See https://aka.ms/new-console-template for more information
-
+﻿using QCSimulator;
 using QCSimulator.Components;
-using System.Runtime.CompilerServices;
+using QCSimulator.Data;
+using QCSimulator.UI;
 
-var bioprocessor = new Component("Bioprocessor", 200, 6000, 36, -1);
-var coolingCore = new Component("Cooling Core", 0, 10000, -1, 200);
+var data = (new DataLoader()).LoadComponents();
 
-var rack = new Rack(bioprocessor, bioprocessor, coolingCore, coolingCore);
-var computer = new QuantumComputer(rack, 1.44, 1.03, 2, QCSimulator.Voltage.UV);
+var picker = new ComponentPicker(4, data);
+var components = picker.Pick();
 
-var result = computer.Simulate();
+var clock = 1.44;
+var voltage = 1.03;
+var racks = 2;
+var voltageTier = Voltage.UV;
+
+var rack = new Rack(components);
+var computer = new QuantumComputer(rack, clock, voltage, racks, voltageTier);
+
+Console.Clear();
 
 Console.WriteLine("Simulating...");
 
+var result = computer.Simulate();
 
 if (!result.IsValid)
 {

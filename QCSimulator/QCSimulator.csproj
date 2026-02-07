@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\Components.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\Components.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Components\" />
   </ItemGroup>
 

@@ -1,0 +1,35 @@
+﻿# Format: Name | Computation | HeatLimit | HeatConstant | CoolConstant
+
+Quantum Circuit | 320 | 10000 | 10 | -1
+Pico Circuit | 260 | 9500 | 12 | -1
+
+Optical Mainframe | 260 | 8000 | 20 | -1
+Optical Computer | 240 | 8000 | 22 | -1
+Optical Assembly | 220 | 8000 | 24 | -1
+Optical Processor | 200 | 8000 | 26 | -1
+
+Bio Mainframe | 260 | 6000 | 30 | -1
+Bioware Supercomputer | 240 | 6000 | 32 | -1
+Biowareprocessor Assembly | 220 | 6000 | 34 | -1
+Bioprocessor | 200 | 6000 | 36 | -1
+
+Wetware Mainframe | 220 | 4000 | 40 | -1
+Wetware Supercomputer | 200 | 4000 | 42 | -1
+Wetwareprocessor Assembly | 180 | 4000 | 44 | -1
+Wetwareprocessor | 160 | 4000 | 46 | -1
+
+Crystalprocessor Mainframe | 120 | 2000 | 50 | -1
+Ultimate Crystalcomputer | 100 | 2000 | 52 | -1
+Crystalprocessor Assembly | 80 | 2000 | 54 | -1
+Crystalprocessor | 60 | 2000 | 56 | -1
+
+APU T3 | 240 | 2000 | 40 | -1
+APU T2 | 120 | 2000 | 42 | -1
+Graphics Card T3 | 100 | 2000 | 44 | -1
+CPU T3 | 80 | 2000 | 46 | -1
+
+Cooling Core | 0 | 10000 | -1 | 200
+Advanced Heat Vent | 0 | 8000 | -1 | 160
+Overclocked Heat Vent | 0 | 6000 | -1 | 120
+Reactor Heat Vent | 0 | 4000 | -1 | 80
+Heat Vent | 0 | 2000 | -1 | 40
